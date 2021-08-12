@@ -1,0 +1,16 @@
+name: test
+on: [pull-request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.17.5
+      - name: Install npm packages
+        run: npm ci
+      - name: Run test
+        run: npm run test
