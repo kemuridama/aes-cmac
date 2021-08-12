@@ -9,7 +9,7 @@
     "clean": "rm -rf dist",
     "lint": "run-p lint:*",
     "lint:eslint": "eslint --ext .ts src",
-    "lint:prettier": "prettier --check **/*.(ts|js)",
+    "lint:prettier": "prettier --check '**/*.(ts|js)'",
     "build": "npm run clean && tsc -p ./tsconfig.build.json --outDir ./dist"
   },
   "author": "Ryo Ochiai <ryo.ochiai@kemuridama.jp> (https://kemuridama.jp)",
