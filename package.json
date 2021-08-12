@@ -2,6 +2,10 @@
   "name": "@kemuridama/aes-cmac",
   "version": "0.0.1",
   "description": "A TypesScript implementation of the AES-CMAC algorithm (NIST 800-38B / RFC 4493).",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kemuridama/aes-cmac.git"
+  },
   "main": "dist/index.js",
   "files": ["dist/"],
   "scripts": {
