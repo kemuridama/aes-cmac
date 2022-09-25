@@ -6,7 +6,9 @@
     "type": "git",
     "url": "https://github.com/kemuridama/aes-cmac.git"
   },
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "files": ["dist/"],
   "scripts": {
     "test": "jest",
@@ -14,7 +16,11 @@
     "lint": "run-p lint:*",
     "lint:eslint": "eslint --ext .ts src",
     "lint:prettier": "prettier --check '**/*.(ts|js)'",
-    "build": "npm run clean && tsc -p ./tsconfig.build.json --outDir ./dist"
+    "prebuild": "npm run clean",
+    "build": "run-p build:*",
+    "build:cjs": "esbuild src/index.ts --platform=node --format=cjs --bundle --outfile=dist/cjs/index.js",
+    "build:esm": "esbuild src/index.ts --platform=node --format=esm --bundle --outfile=dist/esm/index.js",
+    "build:types": "tsc -p ./tsconfig.build.json"
   },
   "author": "Ryo Ochiai <ryo.ochiai@kemuridama.jp> (https://kemuridama.jp)",
   "license": "MIT",
@@ -23,6 +29,7 @@
     "@types/node": "^16.4.3",
     "@typescript-eslint/eslint-plugin": "^4.29.1",
     "@typescript-eslint/parser": "^4.29.1",
+    "esbuild": "^0.15.9",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "jest": "^27.0.6",
